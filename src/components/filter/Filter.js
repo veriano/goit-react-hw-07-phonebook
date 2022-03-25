@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import s from './filter-styles.module.css';
-import  actions from 'redux/contacts-actions';
+import  actions from 'redux/contacts/contacts-actions';
 
 export default function Filter () {
   const filterValue = useSelector(state => state.contacts.filter);
@@ -15,7 +15,7 @@ export default function Filter () {
         onChange={(e) => dispatch(actions.filterChange(e.target.value))}
         value={filterValue}
         className={s.input}
-      ></input>
+      />
     </div>
   );
 };

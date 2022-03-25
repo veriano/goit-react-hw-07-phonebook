@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import s from './contactsList-styles.module.css';
 import { useSelector } from 'react-redux';
+import { getFilter } from 'redux/contacts/selectors';
 
 
 export default function ContactList({ contacts, onDeleteContact }) {
-  const filter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(getFilter);
 
    const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
@@ -17,11 +18,11 @@ export default function ContactList({ contacts, onDeleteContact }) {
 
   return (
     <ul className={s.list}>
-      {filtered && filtered.map(({ name, number, id }) => {
+      {filtered && filtered.map(({ name, phone, id }) => {
         return (
           <li key={id} className={s.item}>
             <p className={s.p}>
-              {name} <span className={s.span}>{number}</span>
+              {name} <span className={s.span}>{phone}</span>
             </p>
             <button
               type="button"
